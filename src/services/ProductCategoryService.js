@@ -1,11 +1,9 @@
-import { BASE_URL } from "../Constants";
-const axios = require('axios');
-
+import {axiosInstance} from "../AxiosConfig";
 
 export async  function getAllCategories() {
 
     try{
-        const response =  await axios.get(BASE_URL+'/productCategories');
+        const response =  await axiosInstance.get('/productCategories');
         console.log('response  ', response)
         return response.data;
     }catch(error) {

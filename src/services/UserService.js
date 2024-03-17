@@ -1,10 +1,8 @@
-import { BASE_URL } from "../Constants";
-
-const axios = require('axios');
+import {axiosInstance} from "../AxiosConfig";
 
 
 export async function createUser(user) {
-    const response = await axios.post(BASE_URL+`/users`, user);
+    const response = await axiosInstance.post(`/users`, user);
     
     return response.data;
 }

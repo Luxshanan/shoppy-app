@@ -1,10 +1,9 @@
-import axios from "axios";
-import { BASE_URL } from "../Constants";
+import {axiosInstance} from "../AxiosConfig";
 
 
 class AuthService {
   login(email, password) {
-    return axios.post(BASE_URL + "/auth/signin", { "email":email, "password": password})
+    return axiosInstance.post( "/auth/signin", { "email":email, "password": password})
       .then(response => {
         if (response.data.accessToken) {
           localStorage.setItem("user", JSON.stringify(response.data));
@@ -19,7 +18,7 @@ class AuthService {
     localStorage.removeItem("user");
   }
   register(username, email, password) {
-    return axios.post(BASE_URL + "/auth/signup", {
+    return axiosInstance.post( "/auth/signup", {
       username,
       email,
       password
@@ -27,7 +26,6 @@ class AuthService {
   }
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
-    console.log("getCurrentUser",localStorage.getItem('user'))
   }
 }
 export default new AuthService();

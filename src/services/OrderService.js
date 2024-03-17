@@ -1,9 +1,6 @@
-
-import { BASE_URL } from "../Constants";
-
-const axios = require('axios');
+import {axiosInstance} from "../AxiosConfig";
 
 export async function createOrder(order) {
-    const response = await axios.post(BASE_URL+`/orderDetails`, order);
+    const response = await axiosInstance.post(`/orderDetails`, order);
     return response.data;
 }
