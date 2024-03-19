@@ -99,9 +99,7 @@ function Checkout(props) {
                                                             <form className="needs-validation" noValidate="" >
 
                                                                 <div className="mb-3">
-
-                                                                    <textarea className="form-control" value={shippingAddress} onChange={e=> setShippingAddress(e.target.value)} id="address" rows={3} placeholder="Shipping Address" required >
-                                                                        </textarea>
+                                                                    <textarea className="form-control" value={shippingAddress} onChange={e=> setShippingAddress(e.target.value)} id="address" rows={3} placeholder="Shipping Address" required ></textarea>
                                                                     <div className="invalid-feedback"> Please enter your shipping address. </div>
                                                                 </div>
 
