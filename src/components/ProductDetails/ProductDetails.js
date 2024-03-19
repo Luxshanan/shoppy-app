@@ -12,7 +12,6 @@ function ProductDetails(props) {
     useEffect(() => {
         getProductById(productId).then(
             response => {
-                console.log("PadC", response)
                 setProduct(response)
             }
 

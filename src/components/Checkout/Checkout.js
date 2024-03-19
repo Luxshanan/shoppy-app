@@ -19,7 +19,6 @@ function Checkout(props) {
                 cartTotal = cartTotal.toFixed(2)
                 setCart(response)
                 setTotal(cartTotal)
-                console.log(response)
             }
         )
 

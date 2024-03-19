@@ -34,7 +34,6 @@ class Shop extends Component {
             if (productCategoryId) {
                 getProductsByCategory(productCategoryId).then(
                     response => {
-                        console.log(response[0])
                         this.setState({ products: response, productCategory: response[0].productCategory.categoryName })
                     }
                 )

@@ -7,7 +7,6 @@ export async function getCartsByUserAndStatus(userId,cartStatus) {
         const response = await axiosInstance.get('/carts/users/'+userId+'/'+cartStatus);
         return response.data;
     }catch(error) {
-        console.log('error  ', error)
         return [];
     }
     
@@ -18,7 +17,6 @@ export async function getCart(cartId) {
         const response = await axiosInstance.get('/carts/'+cartId);
         return response.data;
     }catch(error) {
-        console.log('error  ', error)
         return {};
     }
     

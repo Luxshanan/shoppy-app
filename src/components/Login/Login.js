@@ -10,7 +10,6 @@ class Login extends Component {
     handleLoginFormSubmit=(event)=>{
         event.preventDefault();
         const loginInfo = {email:this.state.email,password:this.state.password}
-        console.log(loginInfo.email,loginInfo.password)
         AuthService.login(this.state.email, this.state.password).then(
             res => {
            

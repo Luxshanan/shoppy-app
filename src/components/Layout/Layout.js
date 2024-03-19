@@ -41,12 +41,10 @@ class Layout extends Component {
             response => {
                 this.setState({ products: response, productsFilteredBySearch: response })
             }
-
         )
         if (this.state.user) {
             getCartsByUserAndStatus(this.state.user.id, "Pending").then(
                 response => {
-
                     const carts = response;
                     if (carts.length === 0) {
 
@@ -54,18 +52,14 @@ class Layout extends Component {
                         createCart(cart).then(
                             res => {
                                 this.setState({ carts: [res] })
-                                console.log("create carts mount", carts)
                             }
                         )
-
                     } else {
-
                         this.setState({ carts: carts })
                     }
                 }
             )
         }
-
     }
 
 
@@ -190,7 +184,6 @@ class Layout extends Component {
     }
 
     handleCreateOrder = ({ cartId, shippingAddress }) => {
-        console.log(this.state.carts)
         var carts = [...this.state.carts]
         var checkedoutCart = carts.find(cart => cart.id == cartId)
 
@@ -199,17 +192,12 @@ class Layout extends Component {
         const order = { "userId": this.state.user.id, "shippingAddress": shippingAddress, "cartId": cartId }
         createOrder(order).then(
             response => {
-
-
                 updateCart(checkedoutCart).then(
                     res => {
                         toast.success("Your Order Has Been Placed Successfully")
                         carts = carts.filter(cart => cart.id !== cartId)
                         this.setState({ carts: carts })
-
-                        window.location.href = "/"
-                    }
-                )
+                    }).finally(res => window.location.href = "/")
             }
         )
     }

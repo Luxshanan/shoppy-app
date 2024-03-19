@@ -12,7 +12,6 @@ class ProductCategories extends Component {
     componentDidMount() {
         getAllCategories().then(
             response => {
-                console.log("PC",response)
                 this.setState({ productCategories: response })
             }
 
