@@ -194,10 +194,12 @@ class Layout extends Component {
             response => {
                 updateCart(checkedoutCart).then(
                     res => {
-                        toast.success("Your Order Has Been Placed Successfully")
                         carts = carts.filter(cart => cart.id !== cartId)
                         this.setState({ carts: carts })
-                    }).finally(res => window.location.href = "/")
+                    }).finally(res => {
+                        window.location.href = "/"
+                        toast.success("Your Order Has Been Placed Successfully")
+                    })
             }
         )
     }
