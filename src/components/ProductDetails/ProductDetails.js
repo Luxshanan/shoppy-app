@@ -6,13 +6,12 @@ import { getProductById } from '../../services/ProductService';
 function ProductDetails(props) {
     const { productId } = useParams()
     const [product, setProduct] = useState()
-    const { onAddToCart, cartIds } = props;
+    const { onAddToCart, cartIds, onBuyNow } = props;
     const user = AuthService.getCurrentUser();
 
     useEffect(() => {
         getProductById(productId).then(
             response => {
-                console.log("PadC", response)
                 setProduct(response)
             }
 
@@ -50,7 +49,7 @@ function ProductDetails(props) {
                                                     </div>
                                                     <p > {product.productDescription}</p>
                                                     <div>
-                                                        <button className="btn btn-warning mt-3 " type="button" onClick={() => window.location.href = user ? "/carts" : "/login"} >
+                                                        <button className="btn btn-warning mt-3 " type="button" onClick={() => user ? onBuyNow(product) : window.location.href = '/login'} >
                                                             <i className="fa fa-shopping-cart"></i> Buy Now
                                                         </button>
                                                     </div>
